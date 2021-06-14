@@ -24,7 +24,7 @@ async function getRepos(username) {
 
 function createUserCard(user) {
     const cardHTML = `
-        <div class="card">
+        <div class="Ucard">
             <div>
                 <img class="avatar" src="${user.avatar_url}" alt="${user.name}" />
             </div>
@@ -76,3 +76,18 @@ form.addEventListener("submit", (e) => {
         search.value = "";
     }
 });
+
+window.onload = function () {
+    var paginationPage = parseInt($(".cdp").attr("actpage"), 10);
+    $(".cdp_i").on("click", function () {
+        var go = $(this).attr("href").replace("#!", "");
+        if (go === "+1") {
+            paginationPage++;
+        } else if (go === "-1") {
+            paginationPage--;
+        } else {
+            paginationPage = parseInt(go, 10);
+        }
+        $(".cdp").attr("actpage", paginationPage);
+    });
+};
